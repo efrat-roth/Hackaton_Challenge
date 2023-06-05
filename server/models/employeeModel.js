@@ -13,6 +13,7 @@ const employeeSchema = new mongoose.Schema({
     start_date:Date,
     tags:String,
     frontally: Boolean,
+    hasPreferences:Boolean,
     preferences:preferencesModel
 
 })
@@ -24,6 +25,21 @@ const Role=[
     "SuperVisor",
     "Temporary"
 ];
+const Preferences=[
+    "Window", 
+    "SmallRoom",
+    "MiniBar",
+    "HeadPhones",
+    "WirelessMouse",
+    "CoffeeMachine",
+    "AdditionalScreen",
+    "SelfChoose",
+    "Camera",
+    "Printer"
+
+];
+
+
 
 
 module.exports = mongoose.model('entries', employeeSchema);
