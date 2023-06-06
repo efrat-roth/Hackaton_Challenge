@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const scheduleSchema = new mongoose.Schema({
    id:int,
-   office:officeModel,
+   officeId:int,
    date:Date,
    starttime:Date,
    endTime:Date

@@ -12,9 +12,8 @@ const employeeSchema = new mongoose.Schema({
     phone_number:String,
     start_date:Date,
     tags:String,
-    frontally: Boolean,
+    frontally:tuplefrontallySchema,
     hasPreferences:Boolean,
-    preferences:preferencesModel
 
 })
 const Role=[
@@ -25,19 +24,11 @@ const Role=[
     "SuperVisor",
     "Temporary"
 ];
-const Preferences=[
-    "Window", 
-    "SmallRoom",
-    "MiniBar",
-    "HeadPhones",
-    "WirelessMouse",
-    "CoffeeMachine",
-    "AdditionalScreen",
-    "SelfChoose",
-    "Camera",
-    "Printer"
 
-];
+const tuplefrontallySchema = new mongoose.Schema({
+    fron: Boolean,
+    id_room: Number,
+  });
 
 
 

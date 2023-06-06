@@ -1,19 +1,13 @@
 const mongoose = require("mongoose");
 
 const officeModelSchema = new mongoose.Schema({
-    officeName: int,
+    officeId:int,
+    officeName: String,
     location: String,
+    floor:int,
     capacity:int,
-    facilities:Facilities
+    
 })
-const Facilities=[
-    "headphones", 
-    "Camera",
-    "printer",
-    "AnotherScreen",
-    "WirelessMouse",
-    "coffeeMachine",
-    "selfChoose"
-];
+
 
 module.exports = mongoose.model('entries', officeModelSchema);
