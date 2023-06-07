@@ -11,7 +11,7 @@
         "module": "uvicorn",
         "cwd": "${workspaceFolder}/backend",
         "envFile": "${workspaceFolder}/backend/.env",
-        "args": ["main:app"],
+        "args": ["main:app", "--reload"],
         "jinja": true,
         "justMyCode": true
       }

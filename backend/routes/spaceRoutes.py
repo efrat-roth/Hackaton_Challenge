@@ -7,13 +7,13 @@ from models import spacedModel
 spaceRouts = APIRouter()
 @spaceRouts.post("", response_description="Create a new space", status_code=status.HTTP_201_CREATED, response_model=spacedModel)
 def create_space(request: Request, schedule: spaceModel = Body(...)):
-    schedule = jsonable_encoder(schedule)
-    new_space = request.app.database["spaces"].insert_one(schedule)
-    created_schedule = request.app.database["spaces"].find_one(
+    space = jsonable_encoder(space)
+    new_space = request.app.database["spaces"].insert_one(space )
+    created_space = request.app.database["spaces"].find_one(
         {"_id": new_space.inserted_id}
     )
 
-    return created_schedule
+    return created_space
 
 
 @spaceRouts.get("", response_description="List all spaces", response_model=List[spacedModel])

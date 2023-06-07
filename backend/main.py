@@ -4,10 +4,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
 from dotenv import dotenv_values
-from routes import employeeRoutes as employeeRoutes
-from routes import officeRoutes as officeRouter
-from routes import spaceRoutes as spaceRouter
-from routes import scheduleRoutes as scheduleRouter
+from mongoengine import connect
+from routes import employee
+# from routes import employeeRoutes as employeeRoutes
+# from routes import officeRoutes as officeRouter
+# from routes import spaceRoutes as spaceRouter
+# from routes import scheduleRoutes as scheduleRouter
 
 
 dotenv_values(".env")
@@ -24,18 +26,20 @@ app.add_middleware(
 
 @app.on_event("startup")
 def startup_db_client():
-    app.mongodb_client = MongoClient(
-        os.getenv("MONGO_IP"),
-        username=os.getenv("MONGO_USER"),
-        password=os.getenv("MONGO_PASSWORD"),
+    username = "manager"
+    password = "qwertyuiop"
+    hostname = "projectdatabase.gekhcz5.mongodb.net"
+    dbname = "lol"
+    connect(dbname, username=username, password=password,
+        host = f"mongodb+srv://{hostname}"
     )
-    app.database = app.mongodb_client["bootcamp"]
-
 
 @app.on_event("shutdown")
 def shutdown_db_client():
-    app.mongodb_client.close()
+    pass
+    # app.mongodb_client.close()
 
 
-app.include_router(task_router, tags=["tasks"], prefix="/api/v1/tasks")
-app.include_router(project_router, tags=["projects"], prefix="/api/v1/projects")
+app.include_router(employee.router)
+# app.include_router(task_router, tags=["tasks"], prefix="/api/v1/tasks")
+# app.include_router(project_router, tags=["projects"], prefix="/api/v1/projects")
