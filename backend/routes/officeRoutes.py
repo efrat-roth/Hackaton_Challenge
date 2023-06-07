@@ -4,8 +4,8 @@ from typing import List
 
 from models import officeModel
 
-routerP = APIRouter()
-@routerP.post("", response_description="Create a new office", status_code=status.HTTP_201_CREATED, response_model=employeeModel)
+officeRoutes = APIRouter()
+@officeRoutes.post("", response_description="Create a new office", status_code=status.HTTP_201_CREATED, response_model=employeeModel)
 def create_office(request: Request, office: Office = Body(...)):
     office = jsonable_encoder(office)
     new_office = request.app.database["offices"].insert_one(office)
@@ -16,13 +16,13 @@ def create_office(request: Request, office: Office = Body(...)):
     return created_office
 
 
-@routerP.get("", response_description="List all offices", response_model=List[officeModel])
+@officeRoutes.get("", response_description="List all offices", response_model=List[officeModel])
 def list_employees(request: Request):
     offices = list(request.app.database["offices"].find(limit=100))
     return offices
 
 
-@routerP.get("/{id}", response_description="Get a single office by id", response_model=officeModel)
+@officeRoutes.get("/{id}", response_description="Get a single office by id", response_model=officeModel)
 def find_employee(id: str, request: Request):
     if (office := request.app.database["offices"].find_one({"_id": id})) is not None:
         return office
@@ -31,7 +31,7 @@ def find_employee(id: str, request: Request):
                         detail=f"Office with ID {id} not found")
 
 
-@routerP.put("/{id}", response_description="Update a Office", response_model=officeModel)
+@officeRoutes.put("/{id}", response_description="Update a Office", response_model=officeModel)
 def update_office(id: str, request: Request, employee: officeUpdate = Body(...)):
     office = {k: v for k, v in office.dict().items() if v is not None}
 
@@ -53,7 +53,7 @@ def update_office(id: str, request: Request, employee: officeUpdate = Body(...))
                         detail=f"Office with ID {id} not found")
 
 
-@routerP.delete("/{id}", response_description="Delete a office")
+@officeRoutes.delete("/{id}", response_description="Delete a office")
 def delete_office(id: str, request: Request, response: Response):
     delete_result = request.app.database["offices"].delete_one({"_id": id})
 

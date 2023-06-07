@@ -4,63 +4,63 @@ from typing import List
 
 from models import scheduleModel
 
-routerP = APIRouter()
-@routerP.post("", response_description="Create a new office", status_code=status.HTTP_201_CREATED, response_model=employeeModel)
+scheduleRouts = APIRouter()
+@scheduleRouts.post("", response_description="Create a new schedule", status_code=status.HTTP_201_CREATED, response_model=employeeModel)
 def create_schedule(request: Request, schedule: Schedule = Body(...)):
     schedule = jsonable_encoder(schedule)
     new_schedule = request.app.database["schedules"].insert_one(schedule)
-    created_office = request.app.database["schedules"].find_one(
+    created_schedule = request.app.database["schedules"].find_one(
         {"_id": new_schedule.inserted_id}
     )
 
-    return created_office
+    return created_schedule
 
 
-@routerP.get("", response_description="List all schedules", response_model=List[scheduleModel])
+@scheduleRouts.get("", response_description="List all schedules", response_model=List[scheduleModel])
 def list_employees(request: Request):
     offices = list(request.app.database["schedules"].find(limit=100))
     return offices
 
 
-@routerP.get("/{id}", response_description="Get a single office by id", response_model=officeModel)
-def find_employee(id: str, request: Request):
-    if (office := request.app.database["offices"].find_one({"_id": id})) is not None:
-        return office
+@scheduleRouts.get("/{id}", response_description="Get a single schedule by id", response_model=scheduleModel)
+def find_schedule(id: str, request: Request):
+    if (schedule := request.app.database["schedules"].find_one({"_id": id})) is not None:
+        return schedule
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                        detail=f"Office with ID {id} not found")
+                        detail=f"Schedule with ID {id} not found")
 
 
-@routerP.put("/{id}", response_description="Update a Office", response_model=officeModel)
-def update_office(id: str, request: Request, employee: officeUpdate = Body(...)):
-    office = {k: v for k, v in office.dict().items() if v is not None}
+@scheduleRouts.put("/{id}", response_description="Update a Schedule", response_model=scheduleModel)
+def update_schedule(id: str, request: Request, employee: scheduleUpdate = Body(...)):
+    schedule = {k: v for k, v in schedule.dict().items() if v is not None}
 
-    if len(office) >= 1:
-        update_result = request.app.database["offices"].update_one(
-            {"_id": id}, {"$set": office}
+    if len(schedule) >= 1:
+        update_result = request.app.database["schedules"].update_one(
+            {"_id": id}, {"$set": schedule}
         )
 
         if update_result.modified_count == 0:
             raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND, detail=f"Office with ID {id} not found")
+                status_code=status.HTTP_404_NOT_FOUND, detail=f"Schedule with ID {id} not found")
 
     if (
-        existing_office := request.app.database["office"].find_one({"_id": id})
+        existing_office := request.app.database["schedule"].find_one({"_id": id})
     ) is not None:
-        return existing_office
+        return existing_schedule
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                        detail=f"Office with ID {id} not found")
+                        detail=f"Schedule with ID {id} not found")
 
 
-@routerP.delete("/{id}", response_description="Delete a office")
-def delete_office(id: str, request: Request, response: Response):
-    delete_result = request.app.database["offices"].delete_one({"_id": id})
+@scheduleRouts.delete("/{id}", response_description="Delete a schedule")
+def delete_schedule(id: str, request: Request, response: Response):
+    delete_result = request.app.database["schedules"].delete_one({"_id": id})
 
     if delete_result.deleted_count == 1:
         response.status_code = status.HTTP_204_NO_CONTENT
         return response
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                        detail=f"Office with ID {id} not found")
+                        detail=f"Schedule with ID {id} not found")
 
