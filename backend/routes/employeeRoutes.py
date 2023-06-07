@@ -6,7 +6,7 @@ from models import employeeModel
 
 employeeRoutes = APIRouter()
 @employeeRoutes.post("", response_description="Create a new employee", status_code=status.HTTP_201_CREATED, response_model=employeeModel)
-def create_employee(request: Request, employee: Employee = Body(...)):
+def create_employee(request: Request, employee: employeeModel = Body(...)):
     employee = jsonable_encoder(employee)
     new_employee = request.app.database["employees"].insert_one(employee)
     created_employee = request.app.database["employees"].find_one(
