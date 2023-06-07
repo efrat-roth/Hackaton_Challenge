@@ -5,7 +5,7 @@ from typing import List
 from models import employeeModel
 
 routerP = APIRouter()
-@routerP.post("", response_description="Create a new employee", status_code=status.HTTP_201_CREATED, response_model=Project)
+@routerP.post("", response_description="Create a new employee", status_code=status.HTTP_201_CREATED, response_model=employeeModel)
 def create_employee(request: Request, employee: Employee = Body(...)):
     employee = jsonable_encoder(employee)
     new_employee = request.app.database["employees"].insert_one(employee)
@@ -16,51 +16,51 @@ def create_employee(request: Request, employee: Employee = Body(...)):
     return created_employee
 
 
-@routerP.get("", response_description="List all projects", response_model=List[Project])
-def list_projects(request: Request):
-    projects = list(request.app.database["projects"].find(limit=100))
-    return projects
+@routerP.get("", response_description="List all employees", response_model=List[employeeModel])
+def list_employees(request: Request):
+    employees = list(request.app.database["employees"].find(limit=100))
+    return employees
 
 
-@routerP.get("/{id}", response_description="Get a single project by id", response_model=Project)
-def find_project(id: str, request: Request):
-    if (Project := request.app.database["projects"].find_one({"_id": id})) is not None:
-        return Project
+@routerP.get("/{id}", response_description="Get a single employee by id", response_model=employeeModel)
+def find_employee(id: str, request: Request):
+    if (employee := request.app.database["employees"].find_one({"_id": id})) is not None:
+        return employee
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                        detail=f"Project with ID {id} not found")
+                        detail=f"Employee with ID {id} not found")
 
 
-@routerP.put("/{id}", response_description="Update a Project", response_model=Project)
-def update_task(id: str, request: Request, project: ProjectUpdate = Body(...)):
-    project = {k: v for k, v in project.dict().items() if v is not None}
+@routerP.put("/{id}", response_description="Update a Employee", response_model=employeeModel)
+def update_employee(id: str, request: Request, employee: EmployeeUpdate = Body(...)):
+    employee = {k: v for k, v in employee.dict().items() if v is not None}
 
-    if len(project) >= 1:
-        update_result = request.app.database["projects"].update_one(
-            {"_id": id}, {"$set": project}
+    if len(employee) >= 1:
+        update_result = request.app.database["employees"].update_one(
+            {"_id": id}, {"$set": employee}
         )
 
         if update_result.modified_count == 0:
             raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND, detail=f"Project with ID {id} not found")
+                status_code=status.HTTP_404_NOT_FOUND, detail=f"Employee with ID {id} not found")
 
     if (
-        existing_project := request.app.database["projects"].find_one({"_id": id})
+        existing_employee := request.app.database["employee"].find_one({"_id": id})
     ) is not None:
-        return existing_project
+        return existing_employee
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                        detail=f"Project with ID {id} not found")
+                        detail=f"Employee with ID {id} not found")
 
 
-@routerP.delete("/{id}", response_description="Delete a project")
-def delete_task(id: str, request: Request, response: Response):
-    delete_result = request.app.database["projects"].delete_one({"_id": id})
+@routerP.delete("/{id}", response_description="Delete a employee")
+def delete_employee(id: str, request: Request, response: Response):
+    delete_result = request.app.database["employees"].delete_one({"_id": id})
 
     if delete_result.deleted_count == 1:
         response.status_code = status.HTTP_204_NO_CONTENT
         return response
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                        detail=f"Project with ID {id} not found")
+                        detail=f"Employee with ID {id} not found")
 
