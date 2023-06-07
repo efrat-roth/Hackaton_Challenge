@@ -6,7 +6,7 @@ from models import scheduleModel
 
 scheduleRouts = APIRouter()
 @scheduleRouts.post("", response_description="Create a new schedule", status_code=status.HTTP_201_CREATED, response_model=employeeModel)
-def create_schedule(request: Request, schedule: Schedule = Body(...)):
+def create_schedule(request: Request, schedule: scheduleModel = Body(...)):
     schedule = jsonable_encoder(schedule)
     new_schedule = request.app.database["schedules"].insert_one(schedule)
     created_schedule = request.app.database["schedules"].find_one(

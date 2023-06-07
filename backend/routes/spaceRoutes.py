@@ -5,12 +5,12 @@ from typing import List
 from models import spacedModel
 
 spaceRouts = APIRouter()
-@spaceRouts.post("", response_description="Create a new space", status_code=status.HTTP_201_CREATED, response_model=employeeModel)
-def create_space(request: Request, schedule: Schedule = Body(...)):
+@spaceRouts.post("", response_description="Create a new space", status_code=status.HTTP_201_CREATED, response_model=spacedModel)
+def create_space(request: Request, schedule: spaceModel = Body(...)):
     schedule = jsonable_encoder(schedule)
-    new_schedule = request.app.database["schedules"].insert_one(schedule)
-    created_schedule = request.app.database["schedules"].find_one(
-        {"_id": new_schedule.inserted_id}
+    new_space = request.app.database["spaces"].insert_one(schedule)
+    created_schedule = request.app.database["spaces"].find_one(
+        {"_id": new_space.inserted_id}
     )
 
     return created_schedule

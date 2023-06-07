@@ -1,7 +1,16 @@
 from enum import Enum
-import datetime
+from datetime import datetime
 import uuid
 from pydantic import BaseModel, Field
+
+class Role(str, Enum):
+    Manager = "Manager"
+    Employee = "Employee"
+    TeamManager = "TeamManager"
+    Receptionist = "Receptionist"
+    SuperVisor = "SuperVisor"
+    Temporary = "Temporary"
+
 
 
 class Employee(BaseModel):
@@ -19,10 +28,4 @@ class Employee(BaseModel):
 
 
 
-class Role(Enum):
-    "Manager", 
-    "Employee",
-    "TeamManager",
-    "Receptionist",
-    "SuperVisor",
-    "Temporary"
+

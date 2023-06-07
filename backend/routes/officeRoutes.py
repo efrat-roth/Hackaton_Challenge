@@ -6,7 +6,7 @@ from models import officeModel
 
 officeRoutes = APIRouter()
 @officeRoutes.post("", response_description="Create a new office", status_code=status.HTTP_201_CREATED, response_model=employeeModel)
-def create_office(request: Request, office: Office = Body(...)):
+def create_office(request: Request, office: officeModel = Body(...)):
     office = jsonable_encoder(office)
     new_office = request.app.database["offices"].insert_one(office)
     created_office = request.app.database["offices"].find_one(

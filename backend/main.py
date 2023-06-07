@@ -4,8 +4,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
 from dotenv import dotenv_values
-from routes import router as task_router
-from routesP import routerP as project_router
+from routes import employeeRoutes as employeeRoutes
+from routes import officeRoutes as officeRouter
+from routes import spaceRoutes as spaceRouter
+from routes import scheduleRoutes as scheduleRouter
+
 
 dotenv_values(".env")
 
