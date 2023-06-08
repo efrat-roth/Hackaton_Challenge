@@ -11,7 +11,7 @@ router = APIRouter(prefix="/floor")
 
 @router.get("/all")
 def get_all_floors():
-    floor = list(Floor.objects())
+    floors = list(Floor.objects())
     print(f"{floors=}")
     return floors
 
@@ -27,26 +27,26 @@ async def create_floor(request: Request):
     print(data)
     return "OK"
 
-@router.get('/num_floor')
+@router.get('/<num_floor>')
 def get_office_by_name(num_floor: int):
-    floor = Office.find_one(num_floor==num_floor)
+    floor = Floor.find_one(num_floor==num_floor)
     if not floor:
         raise Exception("The floor isn't exist")
-    return floor
+    return "OK"
 
-@router.put('/num_floor')
-async def update_floor_by_num(num_floor: int, floor: Floor):
+@router.put('/<num_floor>')
+def update_floor_by_num(num_floor: int):
     result = list(Floor.objects()).update_one({"num_floor": num_floor}, {"$set": floor.dict()})
     
     if result.matched_count == 0:
         raise Exception("floor not found")
-    updated_floor = Office.objects(num_floor=num_floor).first()
+    updated_floor = Floor.objects(num_floor=num_floor).first()
     updated_floor.save()  # Save the changes to the database
     return {"message": "Floor updated successfully"}
 
 @router.delete('/<num_floor>')
-async def delete_office_by_name(num_floor: int):
-    result = list(Floor.objects).find_one(num_floor==num_floor).delete_one({"num_floor": num_floor}).save()
+def delete_office_by_name(num_floor: int):
+    result = list(Floor.objects()).find_one(num_floor==num_floor).delete_one({"num_floor": num_floor}).save()
     
     if result.deleted_count == 0:
         raise Exception("Floor not found")
