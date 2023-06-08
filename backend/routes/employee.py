@@ -46,19 +46,10 @@ async def create_employee(request: Request):
 
 @router.get('/{id_employee}')
 def get_employee_by_id(id_employee: int):
-    print(f'{id_employee = }')
-    employees = Employee.objects(employee_id=id_employee)
-    employees = list(employees)
-    print(f"{employees=}")
-    
-    return "Lol"
-    # for e in employees:
-    #     if e.employee_id == id_employee:
-    #         print(e)
-    # print(list(employees))
-    # if not employee:
-    #     raise Exception("The employee isn't exist")
-    # return employee.to_json()
+    employee = Employee.objects(employee_id=id_employee)
+    if not employee:
+        raise Exception("The employee isn't exist")
+    return employee.to_json()
 
 @router.put('/<id_employee>')
 def update_employee_by_id(id_employee: int):
