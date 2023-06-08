@@ -16,11 +16,11 @@ import random
 
 
 class Role(Enum):
-    Manager = (1,)
-    Employee = (2,)
-    TeamManager = (3,)
-    Receptionist = (4,)
-    SuperVisor = (5,)
+    Manager = 1
+    Employee = 2
+    TeamManager = 3
+    Receptionist = 4
+    SuperVisor = 5
     Temporary = 6
 
 
@@ -36,8 +36,8 @@ class Employee(Document):
     employee_id = IntField(required=True)
     first_name = StringField(max_length=50, required=True)
     last_name = StringField(max_length=50, required=False)
-    role = EnumField(Role, required=True)
-    department = EnumField(HiTechClass, required=True)
+    # role = EnumField(Role, required=True)
+    # department = EnumField(HiTechClass, required=True)
     email = StringField(max_length=50)
     phone_number = StringField(max_length=50)
     start_date = DateTimeField(default=datetime.datetime.utcnow)
@@ -50,13 +50,17 @@ class Employee(Document):
     user_name = StringField(required=True)
     password = StringField(require=True)
 
+    def __str__(self):
+        return f"<{self.first_name} - {self.last_name} ({self.employee_id})>"
+    
+
     def to_json(self):
         return {
             "employee_id": self.employee_id,
             "first_name":self.first_name,
             "last_name": self.last_name,
-            "role": self.role,
-            "department" :self.department,
+            # "role": self.role,
+            # "department" :self.department,
             "email" : self.email,
             "phone_number": self.phone_number,
             "start_date": self.start_date,
