@@ -15,7 +15,7 @@ router = APIRouter(prefix="/employee")
 def get_all_employees():
     employees = list(Employee.objects())
     print(f"{employees=}")
-    return employees
+    return [e.to_json() for e in employees]
 
 
 @router.post("")

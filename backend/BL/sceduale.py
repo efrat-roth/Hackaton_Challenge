@@ -87,7 +87,7 @@ def confirmation(employee_list, day_of_week):
             # Increment the running variable
         running_variable += 1
     if(day_of_week==4):
-         arr=DAL.sced_arr.GetAll() 
+         arr=requests.get("http://localhost:8000/sced_arr").json()
          for i in range(len(arr)):
             arr[i] = []
             DAL.sced_arr.update(arr)
