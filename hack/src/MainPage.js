@@ -36,19 +36,19 @@ const App = () => {
 function MainPage() {
  const [employees, setEmployees] = useState([])
 
+
   function handleClickEvents(){
     fetch("http://localhost:8000/employee/all").then(rep => rep.json()).then(jsons => setEmployees(jsons))
   }
-  
+
   return (
     <div>
       <img style={{ width: '100%', height: '22vh' }} src="./savas.jpg" alt="Workspace Image"/>
-      <h1 style={{ fontSize: '70px', color: '#00008B' }}>OptySpace</h1>
+      <h1 style={{ fontSize: '70px', color: '#00008B' }}>OptiSpace</h1>
       <div>
         <Box>
           <Button style={{ fontSize: '15px', gap: '4px' , color: '#8B4513' }}>About</Button>
           <Button style={{ fontSize: '15px', gap: '4px' , color: '#8B4513' }}>Book a Resource</Button>
-          <Button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }}>Contact Us</Button>
           <Button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }} onClick={handleClickEvents}>Events</Button>
           
         </Box>
