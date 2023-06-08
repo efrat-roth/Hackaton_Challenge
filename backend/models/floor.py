@@ -19,7 +19,11 @@ class Floor(Document):
 # for i in range(0,5):
 #   floor = Floor(num_floor=i,num_cube=100)
 #   floor.save()
-
+def to_json(self):
+    return{
+        "num_floor": self.num_floor,
+        "num_cube": self.num_cube;
+    }
 
 
 print('start1')
