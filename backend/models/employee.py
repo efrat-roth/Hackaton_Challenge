@@ -84,7 +84,7 @@ username = "manager"
 password = "qwertyuiop"
 hostname = "projectdatabase.gekhcz5.mongodb.net"
 dbname = "employees"
-# connect(dbname, username=username, password=password, host=f"mongodb+srv://{hostname}")
+#connect(dbname, username=username, password=password, host=f"mongodb+srv://{hostname}")
 
 
 # List_names=["avishag","yael","shirel","tehila","rinat","avigailTen"]
@@ -104,7 +104,7 @@ departments = list(HiTechClass)
 
 
 employee = Employee(employee_id="214430035", first_name="Efrat", last_name="Roth",role=Role.Manager,department=HiTechClass(1),
-email="efratroth15@gmail.com", phone_number="0583280266",start_date=datetime.datetime.now(),tags=["c#", "visual"],frontally=[True,23],days_in_home=5, meet=True,grade=23,user_name="Efrat",password="214430035")
+email="efratroth15@gmail.com", phone_number="0583280266",start_date=datetime.datetime.now(),tags=["c#", "visual"],days_in_home=5, meet=True,grade=23,user_name="Efrat",password="214430035")
 employee.save()
 
 #employee = Employee(employee_id="325528388", first_name="Avigail", last_name="Cohen",role=Role.Receptionist,department=HiTechClass(3),

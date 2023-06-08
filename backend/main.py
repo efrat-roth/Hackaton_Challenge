@@ -27,7 +27,7 @@ def startup_db_client():
     username = "manager"
     password = "qwertyuiop"
     hostname = "projectdatabase.gekhcz5.mongodb.net"
-    dbname = "lol"
+    dbname = "my_work"
     connect(dbname, username=username, password=password,
         host = f"mongodb+srv://{hostname}"
     )
