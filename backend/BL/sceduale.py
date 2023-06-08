@@ -1,7 +1,10 @@
+import requests
+response = requests.get("http://localhost:8000/employee/all")
+
 def find_employee(username, password): # פונקציה שמקבלת שם משתמש וסיסמא ומחזירה את העובד המתאים
     employees = employee_dal. get_all_employees()
     for employee in employees:
-        if employee.username == username and employee.password == password:
+        if employee.username == username and employee.password== password:
             return employee
 
     raise Exception("Employee not exist")  # זריקת חריגה אם העובד לא נמצא
