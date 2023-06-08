@@ -29,7 +29,7 @@ async def create_floor(request: Request):
 
 @router.get('/<{num_floor}>')
 def get_office_by_name(num_floor: int):
-    floor = Floor.objects(num_floor=num_floor)
+    floor = Floor.objects(num_floor=num_floor).first()
     if not floor:
         raise Exception("The floor isn't exist")
     return floor.to_json()

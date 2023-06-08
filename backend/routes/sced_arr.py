@@ -28,7 +28,7 @@ async def create_employee(request: Request):
 
 @router.get('/<{id_sced}>')
 def get_sced_by_id(id_sced: int):
-    sced_arr = ScedArr.objects(id_sced=id_sced)
+    sced_arr = ScedArr.objects(id_sced=id_sced).first()
     if not sced_arr:
         raise Exception("The schedule isn't exist")
     return sced_arr.to_json()

@@ -46,7 +46,7 @@ async def create_employee(request: Request):
 
 @router.get('/{id_employee}')
 def get_employee_by_id(id_employee: int):
-    employee = Employee.objects(employee_id=id_employee)
+    employee = Employee.objects(employee_id=id_employee).first()
     if not employee:
         raise Exception("The employee isn't exist")
     return employee.to_json()
