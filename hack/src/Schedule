@@ -50,6 +50,7 @@ const Schedule = () => {
         </div>
       </div>
       <button className="confirm-button">Confirm</button>
+      <button style={{ position: 'absolute', height: '20vh',bottom: '10px', right: '10px',color:'',padding: '10px' }}>HOME</button>
     </div>
   );
 };
