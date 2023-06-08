@@ -1,12 +1,14 @@
+
 import './App.css';
 //import Text from  './Text';
-import Employeepage from './Employeepage'
+import MainPage from './MainPage'
 
 export default function App() {
   return (
     <div className="App">
       
-    <Employeepage/>
+    <MainPage/>
     </div>
   );
 }
+

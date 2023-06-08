@@ -4,11 +4,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
 from dotenv import dotenv_values
-from mongoengine import connect
+from mongoengine import connect, disconnect
 from routes import employee
-from routes import office as office
-# from routes import spaceRoutes as spaceRouter
-# from routes import scheduleRoutes as scheduleRouter
+from routes import floor as floor
 
 
 dotenv_values(".env")
@@ -35,10 +33,11 @@ def startup_db_client():
 
 @app.on_event("shutdown")
 def shutdown_db_client():
+    disconnect()
     pass
     # app.mongodb_client.close()
 
 
 app.include_router(employee.router)
-# app.include_router(task_router, tags=["tasks"], prefix="/api/v1/tasks")
-# app.include_router(project_router, tags=["projects"], prefix="/api/v1/projects")
+app.include_router(floor.router)
+
