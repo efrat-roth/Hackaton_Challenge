@@ -103,9 +103,7 @@ List_lists = [List_tagsBac, List_tagFro]
 departments = list(HiTechClass)
 
 
-employee = Employee(employee_id="214430035", first_name="Efrat", last_name="Roth",role=Role.Manager,department=HiTechClass(1),
-email="efratroth15@gmail.com", phone_number="0583280266",start_date=datetime.datetime.now(),tags=["c#", "visual"],days_in_home=5, meet=True,grade=23,user_name="Efrat",password="214430035")
-employee.save()
+
 
 #employee = Employee(employee_id="325528388", first_name="Avigail", last_name="Cohen",role=Role.Receptionist,department=HiTechClass(3),
 #email="avigailcohen17@gmail.com",phone_number="0545476488",start_date=datetime.datetime.now(),tags=["python", "react", "css"],frontally=[False,19],days_in_home=6,meet=False,grade=2,user_name="Avigail",password="325528388")
