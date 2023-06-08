@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
 from dotenv import dotenv_values
-from mongoengine import connect
+from mongoengine import connect, disconnect
 from routes import employee
 from routes import floor as floor
 
@@ -33,6 +33,7 @@ def startup_db_client():
 
 @app.on_event("shutdown")
 def shutdown_db_client():
+    disconnect()
     pass
     # app.mongodb_client.close()
 

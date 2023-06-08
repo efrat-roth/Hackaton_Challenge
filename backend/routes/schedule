@@ -3,50 +3,52 @@ from fastapi import APIRouter, Response, status, Request, Body
 
 # , , Request, Response, HTTPException, status
 from fastapi.encoders import jsonable_encoder
-from models.floor import Floor
+from models.schedule import Schedule
 from typing import List
 
-router = APIRouter(prefix="/floor")
+router = APIRouter(prefix="/schedule")
 
 
 @router.get("/all")
-def get_all_floors():
-    floors = list(Floor.objects())
-    print(f"{floors=}")
-    return floors
+def get_all_schedules():
+    schedules = list(Schedule.objects())
+    print(f"{schedules=}")
+    return schedules
 
 
 @router.post("")
-async def create_floor(request: Request):
+async def create_schedule(request: Request):
     data = await request.json()
-    floor = Floor(
+    schedule = Schedule(
+        schedule_id=data.get("schedule_id"),
+        home=data.get("home"),
+        office=data.get("office"),
         num_floor=data.get("num_floor"),
-        num_cube=data.get("num_cube"),
     )
-    floor.save()
+    schedule.save()
     print(data)
     return "OK"
 
-@router.get('/num_floor')
-def get_office_by_name(num_floor: int):
-    floor = Floor.find_one(num_floor==num_floor)
-    if not floor:
-        raise Exception("The floor isn't exist")
-    return floor
+@router.get('/id_schedule')
+def get_schedule_by_id(id_schedule: str):
+    schedule = Schedule.find_one(id_schedule==id_schedule)
+    if not schedule:
+        raise Exception("The schedule isn't exist")
+    return schedule
 
-@router.put('/num_floor')
-def update_floor_by_num(num_floor: int, floor: Floor):
+@router.put('/id_schedule')
+def update_floor_by_num(id_schedule: int, floor: Floor):
     result = list(Floor.objects()).update_one({"num_floor": num_floor}, {"$set": floor.dict()})
     
     if result.matched_count == 0:
         raise Exception("floor not found")
-    updated_floor = Floor.objects(num_floor=num_floor).first()
+    updated_floor = Office.objects(num_floor=num_floor).first()
     updated_floor.save()  # Save the changes to the database
     return {"message": "Floor updated successfully"}
 
 @router.delete('/<num_floor>')
 def delete_office_by_name(num_floor: int):
-    result = list(Floor.objects()).find_one(num_floor==num_floor).delete_one({"num_floor": num_floor}).save()
+    result = list(Floor.objects).find_one(num_floor==num_floor).delete_one({"num_floor": num_floor}).save()
     
     if result.deleted_count == 0:
         raise Exception("Floor not found")

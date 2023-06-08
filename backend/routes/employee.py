@@ -51,7 +51,7 @@ def get_employee_by_id(id_employee: str):
     return employee
 
 @router.put('/id_employee')
-async def update_employee_by_id(id_employee: str, employee: Employee):
+def update_employee_by_id(id_employee: str, employee: Employee):
     result = list(Employee.objects()).update_one({"id_employee": id_employee}, {"$set": employee.dict()}).save()
     
     if result.matched_count == 0:
@@ -61,7 +61,7 @@ async def update_employee_by_id(id_employee: str, employee: Employee):
     return {"message": "Employee updated successfully"}
 
 @router.delete('/<id_employee>')
-async def delete_employee_by_id(id_employee: str):
+def delete_employee_by_id(id_employee: str):
     result = list(Employee.objects).find_one(id_employee==id_employee).delete_one({"id": id})
     
     if result.deleted_count == 0:
