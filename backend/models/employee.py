@@ -49,7 +49,7 @@ def generate_random_date():
 username = "manager"
 password = "qwertyuiop"
 hostname = "projectdatabase.gekhcz5.mongodb.net"
-dbname = "employeeyy"
+dbname = "Employees"
 connect(dbname, username=username, password=password,
              host = f"mongodb+srv://{hostname}"
  )

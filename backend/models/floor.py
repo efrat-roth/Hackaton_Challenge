@@ -3,6 +3,13 @@ import datetime
 import uuid
 from pydantic import BaseModel, Field
 
+username = "manager"
+password = "qwertyuiop"
+hostname = "projectdatabase.gekhcz5.mongodb.net"
+dbname = "floors"
+connect(dbname, username=username, password=password,
+             host = f"mongodb+srv://{hostname}"
+ )
 
 class Floor(Document):
   #id_floor= stringField(required=True)

@@ -3,10 +3,10 @@ from fastapi import APIRouter, Response, status, Request, Body
 
 # , , Request, Response, HTTPException, status
 from fastapi.encoders import jsonable_encoder
-from models.office import Office
+from models.floor import Floor
 from typing import List
 
-router = APIRouter(prefix="/office")
+router = APIRouter(prefix="/floor")
 
 
 @router.get("/all")
