@@ -39,24 +39,17 @@ async def create_employee(request: Request):
     )
     employee.save()
     print(data)
-    # employee = jsonable_encoder(employee)
-    # new_employee = request.app.database["employees"].insert_one(employee)
-    # created_employee = request.app.database["employees"].find_one(
-    #     {"_id": new_employee.inserted_id}
-    # )
-
-    # return created_employee
     return "OK"
 
 @router.get('/id_employee')
-def get_employee_by_name(first_name: str):
-    employee = Employee.find_one(first_name=first_name)
+def get_employee_by_id(id_employee: str):
+    employee = Employee.find_one(id_employee==id_employee)
     if not employee:
         raise Exception("The employee isn't exist")
     return employee
 
 @router.put('/id_employee')
-async def update_employee_by_name(id_employee: str, employee: Employee):
+async def update_employee_by_id(id_employee: str, employee: Employee):
     result = list(Employee.objects()).update_one({"id_employee": id_employee}, {"$set": employee.dict()}).save()
     
     if result.matched_count == 0:
@@ -67,7 +60,7 @@ async def update_employee_by_name(id_employee: str, employee: Employee):
 
 @router.delete('/<id_employee>')
 async def delete_employee_by_id(id_employee: str):
-    result = list(Employee.objects).find_one(id_employee==id_employee).delete_one({"id": id}).save()
+    result = list(Employee.objects).find_one(id_employee==id_employee).delete_one({"id": id})
     
     if result.deleted_count == 0:
         raise Exception("Employee not found")

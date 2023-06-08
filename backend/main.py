@@ -6,8 +6,7 @@ from pymongo import MongoClient
 from dotenv import dotenv_values
 from mongoengine import connect
 from routes import employee
-# from routes import employeeRoutes as employeeRoutes
-# from routes import officeRoutes as officeRouter
+from routes import office as office
 # from routes import spaceRoutes as spaceRouter
 # from routes import scheduleRoutes as scheduleRouter
 
