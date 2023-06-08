@@ -12,9 +12,10 @@ code {
     monospace;
 }
 
-button{
-  border: none;
-  margin: 3px;
-  box-shadow: 0px 0px 5px black;
-  border-radius: 8px;
+
+
+body{
+  font-family: "Roboto", Arial, sans-serif;
+  background-color: #f1f1f1;
+  color: #333;
 }
