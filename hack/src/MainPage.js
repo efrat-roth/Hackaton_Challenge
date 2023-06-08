@@ -1,22 +1,55 @@
-import { Button } from '@mui/material';
-import React from 'react';
+import {Button,Box} from "@mui/material";
+import styled from 'styled-components';
+import React from "react";
+
+
+const MainScreen = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ImageContainer = styled.div`
+  width: 25%;
+  height: 25vh;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const App = () => {
+  return (
+    <MainScreen>
+      <ImageContainer>
+        <Image src="D:\שנה ב\סמסטר ב\האקתון\Hackaton_Challenge\hack\public\oppo_headquarters_bjarke_ingels_1.jpg" alt="Your Image" />
+      </ImageContainer>
+    </MainScreen>
+  );
+};
+
 
 function MainPage() {
   return (
     <div>
-      <img src="C:\Users\שמתשמ\Desktop\abcd.jpg" alt="Workspace Image" />
-      <h1>The Spacetimize</h1>
+      <img src="D:\שנה ב\סמסטר ב\האקתון\Hackaton_Challenge\hack\public\oppo_headquarters_bjarke_ingels_1.jpg" alt="Workspace Image" />
+      <h1 style={{ fontSize: '70px', color: '#8B008B' }}>The Spacetimize</h1>
       <div>
-      {/* <Button variant="text">Text</Button>
-<Button variant="contained">Contained</Button>
-<Button variant="outlined">Outlined</Button> */}
-        <button>About</button>
-        <button>Book a Resource</button>
-        <button>Check In/Check Out</button>
-        <button>Events</button>
+        <Box>
+          <Button>About</Button>
+          <Button>Book a Resource</Button>
+          <Button>Check In/Check Out</Button>
+          <Button>Events</Button>
+          
+        </Box>
       </div>
     </div>
   );
 }
+
 
 export default MainPage;
