@@ -1,6 +1,6 @@
 import {Button,Box} from "@mui/material";
 import styled from 'styled-components';
-import React from "react";
+import React, { useState } from "react";
 
 
 const MainScreen = styled.div`
@@ -34,6 +34,12 @@ const App = () => {
 
 
 function MainPage() {
+ const [employees, setEmployees] = useState([])
+
+  function handleClickEvents(){
+    fetch("http://localhost:8000/employee/all").then(rep => rep.json()).then(jsons => setEmployees(jsons))
+  }
+  
   return (
     <div>
       <img style={{ width: '100%', height: '22vh' }} src="./savas.jpg" alt="Workspace Image"/>
@@ -43,9 +49,10 @@ function MainPage() {
           <Button style={{ fontSize: '15px', gap: '4px' , color: '#8B4513' }}>About</Button>
           <Button style={{ fontSize: '15px', gap: '4px' , color: '#8B4513' }}>Book a Resource</Button>
           <Button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }}>Contact Us</Button>
-          <Button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }}>Events</Button>
+          <Button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }} onClick={handleClickEvents}>Events</Button>
           
         </Box>
+        <div>{employees.map((employee, i) => <div key={i}>employ {i}-{employee.email}</div>)}</div>
       </div>
     </div>
   );
