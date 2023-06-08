@@ -41,5 +41,5 @@ def shutdown_db_client():
 
 app.include_router(employee.router)
 app.include_router(floor.router)
-app.include_router(floor.router)
+app.include_router(sced_arr.router)
 
