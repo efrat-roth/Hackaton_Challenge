@@ -33,7 +33,7 @@ class HiTechClass(Enum):
 
 
 class Employee(Document):
-    employee_id = StringField(required=True)
+    employee_id = IntField(required=True)
     first_name = StringField(max_length=50, required=True)
     last_name = StringField(max_length=50, required=False)
     role = EnumField(Role, required=True)

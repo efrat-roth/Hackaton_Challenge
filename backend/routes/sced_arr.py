@@ -28,10 +28,10 @@ async def create_employee(request: Request):
 
 @router.get('/<id_sced>')
 def get_sced_by_id(id_sced: int):
-    sced_arr = ScedArr.find_one(sced_arr==sced_arr)
+    sced_arr = ScedArr.find_one(id_sced==id_sced)
     if not sced_arr:
         raise Exception("The schedule isn't exist")
-    return "OK"
+    return sced_arr.to_json()
 
 @router.put("/ id_sced")
 def update_employee_by_id(id_sced: int):

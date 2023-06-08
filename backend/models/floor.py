@@ -22,7 +22,7 @@ class Floor(Document):
 def to_json(self):
     return{
         "num_floor": self.num_floor,
-        "num_cube": self.num_cube;
+        "num_cube": self.num_cube
     }
 
 
