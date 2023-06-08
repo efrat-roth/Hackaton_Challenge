@@ -1,13 +1,16 @@
-def find_employee(username, password): # פונקציה שמקבלת שם משתמש וסיסמא ומחזירה את העובד המתאים
-    employees = employee_dal.get_employee_list()
-    for employee in employees:
-        if employee["username"] == username and employee["password"] == password:
-            return employee
+#def find_employee(username, password): # פונקציה שמקבלת שם משתמש וסיסמא ומחזירה את העובד המתאים
+   
+   # employees = employee_dal.get_employee_list()
+    #for employee in employees:
+       # if employee["username"] == username and employee["password"] == password:
+            #return employee
 
-    raise Exception("Employee not exist")  # זריקת חריגה אם העובד לא נמצא
+  #  raise Exception("Employee not exist")  # זריקת חריגה אם העובד לא נמצא
 
 
 def update_marks(employee_list): #ממיית את העובדים של אותו יום לפי צוותים ולפי הימים שעבדו בשבוע שעבר ומחזירה רשימה ממויינת
+    for employee in employee_list: 
+        employee['mark']=0
     for employee in employee_list: 
         employee['mark'] +=  employee['home_work']
 # Count employees in each team
@@ -38,24 +41,28 @@ def add_employee_to_list(day_of_week, employee):# מוסיפה ללוז הלא �
 
 def update_lists(array_of_lists):
     for i in range(len(array_of_lists)):
-        updated_list = update(array_of_lists[i])
+        updated_list = update_marks(array_of_lists[i])
         array_of_lists[i] = updated_list
 
     DAL.sced_arr.update_schedule(array_of_lists)
 
+    for i in range(len(array_of_lists)):
+        process_lists(array_of_lists[i],i)
+        
 
-def process_lists(array_of_lists): #שולחת כל יום מהשבוע לפונקציה שתתנהג עם הנתונים בהתאם
+
+def process_lists(array_of_lists,day): #שולחת כל יום מהשבוע לפונקציה שתתנהג עם הנתונים בהתאם
     for lst in array_of_lists:
         list_size = len(lst)
         list_remainder = list_size % 50
 
         if list_size <= 250 and list_size >10 and list_remainder >= 10:
-            confirmation(lst)
+            confirmation(lst,day)
         elif list_size < 10:
             break
         elif list_size <= 250 and list_size >10 and list_remainder < 10:
             lst=filtering(lst)
-            confirmation(lst)
+            confirmation(lst,day)
 
 def filtering(lst):
     remainder = len(lst) % 50
@@ -85,6 +92,11 @@ def confirmation(employee_list, day_of_week):
             DAL.employee.update(emp)
             # Increment the running variable
         running_variable += 1
-
+    if(day_of_week==4):
+         arr=DAL.sced_arr.GetAll() 
+         for i in range(len(arr)):
+            arr[i] = []
+            DAL.sced_arr.update(arr)
+    
 
     
