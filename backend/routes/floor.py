@@ -13,7 +13,7 @@ router = APIRouter(prefix="/floor")
 def get_all_floors():
     floors = list(Floor.objects())
     print(f"{floors=}")
-    return floors
+    return [ f.to_json() for f in floors]
 
 
 @router.post("")
@@ -32,7 +32,7 @@ def get_office_by_name(num_floor: int):
     floor = Floor.find_one(num_floor==num_floor)
     if not floor:
         raise Exception("The floor isn't exist")
-    return "OK"
+    return floor.to_json()
 
 @router.put('/<num_floor>')
 def update_floor_by_num(num_floor: int):

@@ -1,4 +1,5 @@
 
+import json
 import requests
 response = requests.get("http://localhost:8000")
 
@@ -35,10 +36,9 @@ def add_employee_to_list(day_of_week, employee):# מוסיפה ללוז הלא �
 
 def update_lists(array_of_lists):
     for i in range(len(array_of_lists)):
-        updated_list = update_marks(array_of_lists[i])
-        array_of_lists[i] = updated_list
+        requests.put("http://localhost:8000/sced_arr/1", json{update_marks(array_of_lists[i]).json()}).json()
 
-    DAL.sced_arr.update_schedule(array_of_lists)
+    
 
     for i in range(len(array_of_lists)):
         process_lists(array_of_lists[i],i)
@@ -87,10 +87,10 @@ def confirmation(employee_list, day_of_week):
             # Increment the running variable
         running_variable += 1
     if(day_of_week==4):
-         arr=requests.get("http://localhost:8000/sced_arr").json()
+         arr=requests.get("http://localhost:8000/sced_arr/all").json()
          for i in range(len(arr)):
             arr[i] = []
-            DAL.sced_arr.update(arr)
+            requests.put("http://localhost:8000/sced_arr/"+str(arr[i].id_sced)).json()
     
 
     
