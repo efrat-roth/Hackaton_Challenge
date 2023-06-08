@@ -13,7 +13,6 @@ from enum import Enum
 from pydantic import BaseModel, Field
 import datetime
 import random
-from models.schedule import Schedule
 
 
 class Role(Enum):
