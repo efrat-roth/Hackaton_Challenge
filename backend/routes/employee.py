@@ -35,7 +35,8 @@ async def create_employee(request: Request):
         days_in_home=data.get("days_in_home"),
         meet=data.get("meet"),
         grade=data.get("grade"),
-        schedule=[s for s in data.get("schedule")],
+        floors = data.get("floors"),
+        space = data.get("space"),
         user_name=data.get("user_name"),
         password=data.get("password")
     )
@@ -51,7 +52,7 @@ def get_employee_by_id(id_employee: str):
     return employee
 
 @router.put('/id_employee')
-async def update_employee_by_id(id_employee: str, employee: Employee):
+def update_employee_by_id(id_employee: str, employee: Employee):
     result = list(Employee.objects()).update_one({"id_employee": id_employee}, {"$set": employee.dict()}).save()
     
     if result.matched_count == 0:
@@ -61,7 +62,7 @@ async def update_employee_by_id(id_employee: str, employee: Employee):
     return {"message": "Employee updated successfully"}
 
 @router.delete('/<id_employee>')
-async def delete_employee_by_id(id_employee: str):
+def delete_employee_by_id(id_employee: str):
     result = list(Employee.objects).find_one(id_employee==id_employee).delete_one({"id": id})
     
     if result.deleted_count == 0:
