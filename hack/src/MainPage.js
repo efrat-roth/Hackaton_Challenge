@@ -18,15 +18,15 @@ const ImageContainer = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 22vh
 `;
 
 const App = () => {
   return (
     <MainScreen>
       <ImageContainer>
-        <Image src="D:\שנה ב\סמסטר ב\האקתון\Hackaton_Challenge\hack\public\oppo_headquarters_bjarke_ingels_1.jpg" alt="Your Image" />
+        <Image src= "./savas.jpg" alt="Workspace Image"  />
+        
       </ImageContainer>
     </MainScreen>
   );
@@ -36,14 +36,14 @@ const App = () => {
 function MainPage() {
   return (
     <div>
-      <img src="D:\שנה ב\סמסטר ב\האקתון\Hackaton_Challenge\hack\public\oppo_headquarters_bjarke_ingels_1.jpg" alt="Workspace Image" />
-      <h1 style={{ fontSize: '70px', color: '#8B008B' }}>The Spacetimize</h1>
+      <img style={{ width: '100%', height: '22vh' }} src="./savas.jpg" alt="Workspace Image"/>
+      <h1 style={{ fontSize: '70px', color: '#00008B' }}>OptySpace</h1>
       <div>
         <Box>
-          <Button>About</Button>
-          <Button>Book a Resource</Button>
-          <Button>Check In/Check Out</Button>
-          <Button>Events</Button>
+          <Button style={{ fontSize: '15px', gap: '4px' , color: '#8B4513' }}>About</Button>
+          <Button style={{ fontSize: '15px', gap: '4px' , color: '#8B4513' }}>Book a Resource</Button>
+          <Button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }}>Contact Us</Button>
+          <Button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }}>Events</Button>
           
         </Box>
       </div>
