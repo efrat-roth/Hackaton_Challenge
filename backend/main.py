@@ -7,6 +7,7 @@ from dotenv import dotenv_values
 from mongoengine import connect, disconnect
 from routes import employee
 from routes import floor as floor
+from routes import sced_arr
 
 
 dotenv_values(".env")
@@ -39,5 +40,6 @@ def shutdown_db_client():
 
 
 app.include_router(employee.router)
+app.include_router(floor.router)
 app.include_router(floor.router)
 

@@ -50,6 +50,11 @@ class Employee(Document):
     user_name = StringField(required=True)
     password = StringField(require=True)
 
+    def to_json(self):
+        return {
+            "email": self.email 
+        }
+
 
 def generate_random_date():
     start_date = datetime.date(2017, 1, 1)  # Define your desired start date
