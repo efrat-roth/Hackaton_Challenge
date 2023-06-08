@@ -1,4 +1,4 @@
-from mongoengine import connect, Document, StringField,  EnumField, DateTimeField, ListField, ListField,IntField
+from mongoengine import connect, Document, StringField,  EnumField, DateTimeField, ListField, ListField,IntField,BooleanField
 from enum import Enum
 import datetime 
 import random
@@ -32,10 +32,11 @@ class Employee(Document):
     tags = ListField(StringField(max_length=50))
     frontally = ListField(required=True, max_length=2)
     days_in_home=IntField(required=True)
+    meet=BooleanField(required=True)
+    grade=IntField(required=True,default=0)
     schedule=ListField(IntField())
     user_name=StringField(required=True)
     password=StringField(require=True)
-
 
 def generate_random_date():
     start_date = datetime.date(2017, 1, 1)  # Define your desired start date
@@ -71,16 +72,16 @@ def func():
 
 
 employee = Employee(employee_id="214430035", first_name="Efrat", last_name="Roth",role=Role.Manager,department=HiTechClass(1),
-                    email="efratroth15@gmail.com", phone_number="0583280266",start_date=datetime.datetime.now(),tags=["c#", "visual"],frontally=[True,23],days_in_home=5, user_name="Efrat",password="214430035")
+                    email="efratroth15@gmail.com", phone_number="0583280266",start_date=datetime.datetime.now(),tags=["c#", "visual"],frontally=[True,23],days_in_home=5, meet=True,grade=23,user_name="Efrat",password="214430035")
 employee.save()
 
 employee = Employee(employee_id="325528388", first_name="Avigail", last_name="Cohen",role=Role.Receptionist,department=HiTechClass(3),
-                    email="avigailcohen17@gmail.com",phone_number="0545476488",start_date=datetime.datetime.now(),tags=["python", "react", "css"],frontally=[False,19],days_in_home=6,user_name="Avigail",password="325528388")
+                    email="avigailcohen17@gmail.com",phone_number="0545476488",start_date=datetime.datetime.now(),tags=["python", "react", "css"],frontally=[False,19],days_in_home=6,meet=False,grade1=2,user_name="Avigail",password="325528388")
 employee.save()
 for i in range(7):
    tags = list(List_lists[i % 2])
    random.shuffle(tags)
-   employee = Employee(employee_id=str(i), first_name=List_names[i], last_name="test",role=random.choice(list(Role)),department=(HiTechClass[i%5]), email=List_names[i] +str(i)+ "@gmail.com", phone_number="0583280"+str(i/100)+str(i%10/10)+str(i%100),start_date=generate_random_date(),tags=tags,frontally=list(func()),days_in_home=i%10,user_name=List_names[i], password=str(i))
+   employee = Employee(employee_id=str(i), first_name=List_names[i], last_name="test",role=random.choice(list(Role)),department=(HiTechClass[i%5]), email=List_names[i] +str(i)+ "@gmail.com", phone_number="0583280"+str(i/100)+str(i%10/10)+str(i%100),start_date=generate_random_date(),tags=tags,frontally=list(func()),days_in_home=i%10,meet=i%9==0,grade=i%25,user_name=List_names[i], password=str(i))
    employee.save()
 print('start')
 print('Done! ')

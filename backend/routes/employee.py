@@ -33,6 +33,8 @@ async def create_employee(request: Request):
         tags = [t for t in data.get("tags")],
         frontally = [f for f in data.get("frontally")],
         days_in_home=data.get("days_in_home"),
+        meet=data.get("meet"),
+        grade=data.get("grade"),
         schedule=[s for s in data.get("schedule")],
         user_name=data.get("user_name"),
         password=data.get("password")
