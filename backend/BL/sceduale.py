@@ -1,8 +1,8 @@
 import requests
-response = requests.get("http://localhost:8000/employee/all")
+response = requests.get("http://localhost:8000")
 
 def find_employee(username, password): # פונקציה שמקבלת שם משתמש וסיסמא ומחזירה את העובד המתאים
-    employees = employee_dal. get_all_employees()
+    employees = requests.get("http://localhost:8000/employee/all").json()
     for employee in employees:
         if employee.username == username and employee.password== password:
             return employee
@@ -37,7 +37,7 @@ def add_employee_to_list(day_of_week, employee):# מוסיפה ללוז הלא �
 
     # Access the array in the data layer and add the employee to the corresponding list
 
-    DAL.sced_arr.get_schedule[day_of_week].add(employee)
+    requests.get("http://localhost:8000/sced_arr/1").json().employee_list[day_of_week].append(employee)
 
 def update_lists(array_of_lists):
     for i in range(len(array_of_lists)):
@@ -67,7 +67,7 @@ def filtering(lst):
 
 def confirmation(employee_list, day_of_week):
     # Import the list of employees from the DAL layer
-    dal_employee_list = DAL.employee.GetAll()
+    dal_employee_list = requests.get("http://localhost:8000/employee/all").json()
 
     # Initialize the running variable
     running_variable = 0
@@ -81,7 +81,7 @@ def confirmation(employee_list, day_of_week):
         dal_employee = next((emp for emp in dal_employee_list if emp['id'] == employee_id), None)
 
         if dal_employee:
-            emp=DAL.employee.GetById(employee_id)
+            emp=requests.get("http://localhost:8000/employee/"+str(employee_id)).json()
             # Calculate the floor number based on the running variable
             emp.floor[day_of_week] = (running_variable // 50) + 1
             emp.home_work-=1
