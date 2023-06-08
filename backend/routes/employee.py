@@ -44,15 +44,15 @@ async def create_employee(request: Request):
     print(data)
     return "OK"
 
-@router.get('/id_employee')
+@router.get('/<id_employee>')
 def get_employee_by_id(id_employee: str):
     employee = Employee.find_one(id_employee==id_employee)
     if not employee:
         raise Exception("The employee isn't exist")
-    return employee
+    return "OK"
 
-@router.put('/id_employee')
-def update_employee_by_id(id_employee: str, employee: Employee):
+@router.put('/<id_employee>')
+def update_employee_by_id(id_employee: str):
     result = list(Employee.objects()).update_one({"id_employee": id_employee}, {"$set": employee.dict()}).save()
     
     if result.matched_count == 0:

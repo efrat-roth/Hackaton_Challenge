@@ -27,15 +27,15 @@ async def create_floor(request: Request):
     print(data)
     return "OK"
 
-@router.get('/num_floor')
+@router.get('/<num_floor>')
 def get_office_by_name(num_floor: int):
     floor = Floor.find_one(num_floor==num_floor)
     if not floor:
         raise Exception("The floor isn't exist")
-    return floor
+    return "OK"
 
-@router.put('/num_floor')
-def update_floor_by_num(num_floor: int, floor: Floor):
+@router.put('/<num_floor>')
+def update_floor_by_num(num_floor: int):
     result = list(Floor.objects()).update_one({"num_floor": num_floor}, {"$set": floor.dict()})
     
     if result.matched_count == 0:

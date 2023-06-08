@@ -64,7 +64,7 @@ username = "manager"
 password = "qwertyuiop"
 hostname = "projectdatabase.gekhcz5.mongodb.net"
 dbname = "Employees_entities"
-connect(dbname, username=username, password=password, host=f"mongodb+srv://{hostname}")
+# connect(dbname, username=username, password=password, host=f"mongodb+srv://{hostname}")
 
 
 # List_names=["avishag","yael","shirel","tehila","rinat","avigailTen"]

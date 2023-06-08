@@ -16,9 +16,9 @@ class Floor(Document):
   num_floor=IntField(required=True,max_length=4)
   num_cube=IntField(required=True)
 
-for i in range(0,5):
-  floor = Floor(num_floor=i,num_cube=100)
-  floor.save()
+# for i in range(0,5):
+#   floor = Floor(num_floor=i,num_cube=100)
+#   floor.save()
 
 
 
