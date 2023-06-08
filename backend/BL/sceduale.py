@@ -83,7 +83,7 @@ def confirmation(employee_list, day_of_week):
             # Calculate the floor number based on the running variable
             emp.floor[day_of_week] = (running_variable // 50) + 1
             emp.home_work-=1
-            DAL.employee.update(emp)
+            requests.put("http://localhost:8000/employee/"+str(emp.employee_id))
             # Increment the running variable
         running_variable += 1
     if(day_of_week==4):

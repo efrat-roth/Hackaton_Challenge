@@ -83,7 +83,7 @@ def generate_random_date():
 username = "manager"
 password = "qwertyuiop"
 hostname = "projectdatabase.gekhcz5.mongodb.net"
-dbname = "Employees_entities"
+dbname = "employees"
 # connect(dbname, username=username, password=password, host=f"mongodb+srv://{hostname}")
 
 
@@ -103,21 +103,21 @@ List_lists = [List_tagsBac, List_tagFro]
 departments = list(HiTechClass)
 
 
-# employee = Employee(employee_id="214430035", first_name="Efrat", last_name="Roth",role=Role.Manager,department=HiTechClass(1),
-# email="efratroth15@gmail.com", phone_number="0583280266",start_date=datetime.datetime.now(),tags=["c#", "visual"],frontally=[True,23],days_in_home=5, meet=True,grade=23,user_name="Efrat",password="214430035")
-##employee.save()
+employee = Employee(employee_id="214430035", first_name="Efrat", last_name="Roth",role=Role.Manager,department=HiTechClass(1),
+email="efratroth15@gmail.com", phone_number="0583280266",start_date=datetime.datetime.now(),tags=["c#", "visual"],frontally=[True,23],days_in_home=5, meet=True,grade=23,user_name="Efrat",password="214430035")
+employee.save()
 
-# employee = Employee(employee_id="325528388", first_name="Avigail", last_name="Cohen",role=Role.Receptionist,department=HiTechClass(3),
-# email="avigailcohen17@gmail.com",phone_number="0545476488",start_date=datetime.datetime.now(),tags=["python", "react", "css"],frontally=[False,19],days_in_home=6,meet=False,grade=2,user_name="Avigail",password="325528388")
-# employee.save()
-# for i in range(7):
-#  tags = list(List_lists[i % 2])
-# random.shuffle(tags)
-# employee = Employee(employee_id=str(i), first_name=List_names[i%6], last_name="test",
-#                   role=random.choice(list(Role)),department=(departments[i%5]),
-#                  email=List_names[i%6] +str(i)+ "@gmail.com",
-#                 phone_number="0583280"+str(i/100)+str(i%10/10)+str(i%100),start_date=generate_random_date(),
-#                tags=tags,days_in_home=i%5,meet=i%9==0,grade=i%25,schedule=[],user_name=List_names[i%6], password=str(i))
-# employee.save()
+#employee = Employee(employee_id="325528388", first_name="Avigail", last_name="Cohen",role=Role.Receptionist,department=HiTechClass(3),
+#email="avigailcohen17@gmail.com",phone_number="0545476488",start_date=datetime.datetime.now(),tags=["python", "react", "css"],frontally=[False,19],days_in_home=6,meet=False,grade=2,user_name="Avigail",password="325528388")
+#employee.save()
+#for i in range(7):
+# tags = list(List_lists[i % 2])
+#random.shuffle(tags)
+#employee = Employee(employee_id=str(i), first_name=List_names[i%6], last_name="test",
+ #                 role=random.choice(list(Role)),department=(departments[i%5]),
+  #               email=List_names[i%6] +str(i)+ "@gmail.com",
+   #             phone_number="0583280"+str(i/100)+str(i%10/10)+str(i%100),start_date=generate_random_date(),
+    #           tags=tags,days_in_home=i%5,meet=i%9==0,grade=i%25,schedule=[],user_name=List_names[i%6], password=str(i))
+#employee.save()
 print("start")
 print("Done! ")
