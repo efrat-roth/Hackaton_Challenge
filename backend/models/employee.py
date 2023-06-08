@@ -52,8 +52,23 @@ class Employee(Document):
 
     def to_json(self):
         return {
-            "email": self.email 
-        }
+            "employee_id": self.employee_id,
+            "first_name":self.first_name,
+    "last_name": self.last_name,
+    "role": self.role,
+    "department" :self.department,
+    "email" : self.email,
+    "phone_number": self.phone_number,
+    "start_date": self.start_date,
+    "tags" : self.tags,
+    "days_in_home":self.days_in_home,
+    "meet":self.meet,
+    "grade" : self.grade,
+    "floors": self.floors,
+    "space":self.space,
+    "user_name": self.user_name,
+    "password": self.password
+}
 
 
 def generate_random_date():

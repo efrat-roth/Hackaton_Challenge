@@ -31,7 +31,7 @@ def add_employee_to_list(day_of_week, employee):# מוסיפה ללוז הלא �
 
     # Access the array in the data layer and add the employee to the corresponding list
 
-    requests.get("http://localhost:8000/sced_arr/1").json().employee_list[day_of_week].append(employee)
+    requests.put("http://localhost:8000/sced_arr/1").json().employee_list[day_of_week].append(employee)
 
 def update_lists(array_of_lists):
     for i in range(len(array_of_lists)):

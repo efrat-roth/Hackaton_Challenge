@@ -13,7 +13,7 @@ router = APIRouter(prefix="/floor")
 def get_all_floors():
     floors = list(Floor.objects())
     print(f"{floors=}")
-    return floors
+    return [ f.to_json() for f in floors]
 
 
 @router.post("")

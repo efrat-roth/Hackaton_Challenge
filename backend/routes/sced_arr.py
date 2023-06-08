@@ -10,9 +10,9 @@ router = APIRouter(prefix="/sced_arr")
 
 @router.get("/all")
 def get_all_sced():
-    sced_arrr = list(ScedArr.objects())
-    print(f"{sced_arrr=}")
-    return sced_arrr
+    sced_arr = list(ScedArr.objects())
+    print(f"{sced_arr=}")
+    return [s.to_json() for s in sced_arr]
 
 
 @router.post("")
