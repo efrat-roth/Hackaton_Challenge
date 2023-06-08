@@ -6,9 +6,7 @@ from pymongo import MongoClient
 from dotenv import dotenv_values
 from mongoengine import connect
 from routes import employee
-from routes import office as office
-# from routes import spaceRoutes as spaceRouter
-# from routes import scheduleRoutes as scheduleRouter
+from routes import floor as floor
 
 
 dotenv_values(".env")
@@ -40,5 +38,5 @@ def shutdown_db_client():
 
 
 app.include_router(employee.router)
-# app.include_router(task_router, tags=["tasks"], prefix="/api/v1/tasks")
-# app.include_router(project_router, tags=["projects"], prefix="/api/v1/projects")
+app.include_router(floor.router)
+
