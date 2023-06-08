@@ -6,11 +6,12 @@ function BookResourcePage() {
     <div
     className="my-container"
     style={{
-      backgroundImage: 'url(./cap.png)',
-      backgroundSize: 'cover',
+      backgroundImage: 'url(./vie.png)',
+      // backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
-      height: '100vh'
+      height: '10vh'
+
     }}
   >
 <div className="book-resource-page">
@@ -42,7 +43,7 @@ function BookResourcePage() {
           <label htmlFor="friday">Friday</label>
         </div>
       </div>
-      <button className="confirm-button">Confirm</button>
+      <button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }}className="confirm-button">Confirm</button>
     </div>
 
 

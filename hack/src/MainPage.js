@@ -49,8 +49,9 @@ function MainPage() {
         <Box>
           <Button style={{ fontSize: '15px', gap: '4px' , color: '#8B4513' }}>About</Button>
           <Button style={{ fontSize: '15px', gap: '4px' , color: '#8B4513' }}>Book a Resource</Button>
-          <Button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }} onClick={handleClickEvents}>Events</Button>
-          
+          <Button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }} onClick={handleClickEvents}>Scedule</Button>
+          <Button style={{ fontSize: '15px', gap: '4px' , color: '#8B4513' }}>New Employee</Button>
+          <Button style={{ fontSize: '15px', gap: '4px' , color: '#8B4513' }}>CreateBoard</Button>
         </Box>
         <div>{employees.map((employee, i) => <div key={i}>employ {i}-{employee.email}</div>)}</div>
       </div>
