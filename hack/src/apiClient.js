@@ -1,7 +1,7 @@
 const SERVER_URL = "http://localhost:8000";
 
-export const getTasks = () => {
-  return fetch(`${SERVER_URL}/api/v1/tasks`).then((res) => res.json());
+export const getOptimizatiom = () => {
+  return fetch(`${SERVER_URL}/backend/BL/schedules/update_lists`).then((res) => res.json());
 };
 
 export const updateEmployee = (formsValue) => {
@@ -16,3 +16,4 @@ export const updateEmployee = (formsValue) => {
     }),
   });
 };
+

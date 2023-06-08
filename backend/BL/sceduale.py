@@ -27,18 +27,17 @@ def update_marks(employee_list): #ממיית את העובדים של אותו �
     return sorted_employees
 
 def add_employee_to_list(day_of_week, employee):# מוסיפה ללוז הלא ממויין עובד
-    if day_of_week < 0 or day_of_week > 4:
+    if day_of_week < 0 or day_of_week > 4:  
         raise ValueError("Invalid day of the week. Expected a number from 0 to 4.")
 
     # Access the array in the data layer and add the employee to the corresponding list
 
     requests.get("http://localhost:8000/sced_arr/1").json().employee_list[day_of_week].append(employee)
 
-def update_lists(array_of_lists):
+def update_lists():
+    array_of_lists=requests.get("http://localhost:8000/sced_arr/all").json()
     for i in range(len(array_of_lists)):
-        requests.put("http://localhost:8000/sced_arr/1", json{update_marks(array_of_lists[i]).json()}).json()
-
-    
+        requests.put("http://localhost:8000/sced_arr/1", json(update_marks(array_of_lists[i]).json())).json()  
 
     for i in range(len(array_of_lists)):
         process_lists(array_of_lists[i],i)
