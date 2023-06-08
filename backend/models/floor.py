@@ -4,27 +4,18 @@ import uuid
 from pydantic import BaseModel, Field
 
 
-class floor(BaseModel):
-    id_floor= string Field(default_factory=uuid.uuid4, alias="_id")
-    num_floor : int=Field(...)
-   num_cube:int=Field(...)
-  list_cubes: ListField=Field(...)
-    department: str=Field(...)
-    email: str=Field(...)
-    phone_number:str=Field(...)
-    start_date:datetime=Field(...)
-    tags:str=Field(...)
-    frontally:tuple=Field(...)
-    hasPreferences:bool=Field(...)
-    tags = ListField(StringField(max_length=50))
+class Floor(Document):
+  #id_floor= stringField(required=True)
+  num_floor=intField(required=True,max_length=4)
+   num_cube=intField(required=True)
+
+floor = Floor(num_floor=range(1,5))
+floor.save()
+floor=Floor(num_cube=range(0,50))
+floor.save()
+print('start')
+print('Done! ')
 
 
 
-class Role(Enum):
-    "Manager", 
-    "Employee",
-    "TeamManager",
-    "Receptionist",
-    "SuperVisor",
-    "Temporary"
-List_names=["avishag","yael","shirel","tehila","rinat","avigailTen"]
+
