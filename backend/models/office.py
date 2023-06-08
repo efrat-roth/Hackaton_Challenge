@@ -9,6 +9,3 @@ class Office(Document):
     location=StringField(required=True)
     floor=IntField(required=True)
     capacity=IntField(required=True)
-
-
-

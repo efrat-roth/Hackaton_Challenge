@@ -1,5 +1,4 @@
 from mongoengine import connect, Document, StringField,  EnumField, DateTimeField, ListField, ListField,IntField
-from enum import Enum
 import datetime 
 import random
 
@@ -9,5 +8,3 @@ class Space(Document):
     location=StringField(required=True)
     floors=IntField(required=True)
     description=StringField()
-
-

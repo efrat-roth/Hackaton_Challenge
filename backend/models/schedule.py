@@ -5,6 +5,7 @@ import random
 
 
 class Schedule(Document):
+    
     office_name=IntField(required=True)
     date= DateTimeField(default=datetime.datetime.utcnow,required=True)
     startTime=DateTimeField(default=datetime.datetime.utcnow,required=True)
