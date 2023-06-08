@@ -22,14 +22,14 @@ const UserLogin = () => {
       <h2>User Login</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>שם משתמש:</label>
+          <label>Username:</label>
           <input type="text" value={username} onChange={handleUsernameChange} />
         </div>
         <div>
-          <label>סיסמא:</label>
+          <label>A password:</label>
           <input type="password" value={password} onChange={handlePasswordChange} />
         </div>
-        <button type="submit">התחבר</button>
+        <button type="submit">connect</button>
       </form>
     </div>
   );

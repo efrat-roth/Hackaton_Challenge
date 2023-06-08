@@ -22,64 +22,67 @@ function Employeepage() {
       <h1>Employee Page</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          תעודת זהות:
+        ID:
           <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
         </label>
         <br />
         <label>
-          שם פרטי:
+        First name:
           <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
         </label>
         <br />
         <label>
-          שם משפחה:
+        Last Name:
           <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </label>
         <br />
         <label>
-          תפקיד:
+        role:
           <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="">בחר תפקיד</option>
-            <option value="Manager">מנהל</option>
-            <option value="Employee">עובד</option>
-            <option value="TeamManager">מנהל צוות</option>
-            <option value="Receptionist">מקבל</option>
-            <option value="Supervisor">מפקח</option>
-            <option value="Temporary">זמני</option>
+            <option value="">Choose a role </option>
+            <option value="Manager">Manager</option>
+            <option value="Employee">Employee</option>
+            <option value="TeamManager">TeamManager</option>
+            <option value="Receptionist">Receptionist</option>
+            <option value="Supervisor">Supervisor</option>
+            <option value="Temporary">Temporary</option>
           </select>
         </label>
         <br />
         <label>
-          מחלקה:
+        department:
           <input type="text" value={department} onChange={(e) => setDepartment(e.target.value)} />
         </label>
         <br />
         <label>
-          מייל:
+        mail:
           <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
         <br />
         <label>
-          מספר טלפון:
+        Phone Number:
           <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
         </label>
         <br />
         <label>
-          תאריך תחילת העבודה:
+        Start date:
           <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
         </label>
         <br />
         <label>
-          מיומנויות:
+        Skills:
           <input type="text" value={skills} onChange={(e) => setSkills(e.target.value)} />
         </label>
         <br />
         <label>
-          פרונטלי:
+        frontal:
           <input type="checkbox" checked={isFrontend} onChange={(e) => setIsFrontend(e.target.checked)} />
         </label>
         <br />
-        <button type="submit">שלח</button>
+        
+        <button type="submit">Save</button>
+        <button type="submit">Delete</button>
+        <button type="submit">Update</button>
       </form>
     </div>
   );
