@@ -5,4 +5,5 @@ import random
 from models import employee
 
 class ScedArr(Document):
-    employee_list = ListField(ListField(ReferenceField(employee)))
+    id_sced=IntField(required=True)
+    employee_list = ListField(ListField(ReferenceField(employee)),required=True)
