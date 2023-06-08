@@ -35,7 +35,8 @@ async def create_employee(request: Request):
         days_in_home=data.get("days_in_home"),
         meet=data.get("meet"),
         grade=data.get("grade"),
-        schedule=[s for s in data.get("schedule")],
+        floors = data.get("floors"),
+        space = data.get("space"),
         user_name=data.get("user_name"),
         password=data.get("password")
     )
