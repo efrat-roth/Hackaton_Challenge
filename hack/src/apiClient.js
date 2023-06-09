@@ -12,7 +12,7 @@ export const updateEmployee = (formsValue) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      floors: "[1,0,0,0,1,0,1]", //formsValue
+      floors: "[1,0,1,0,1]", //formsValue
     }),
   });
 };
