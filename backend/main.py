@@ -46,43 +46,43 @@ def shutdown_db_client():
     disconnect()
     pass
     app.mongodb_client.close()
-def generate_random_date():
-    start_date = datetime.date(2017, 1, 1)  # Define your desired start date
-    end_date = datetime.date(2022, 12, 31)  # Define your desired end date
-    days_between = (end_date - start_date).days
-    random_days = random.randint(0, days_between)
-    random_date = start_date + datetime.timedelta(days=random_days)
-    return random_date
-departments = list(HiTechClass)
+# def generate_random_date():
+#     start_date = datetime.date(2017, 1, 1)  # Define your desired start date
+#     end_date = datetime.date(2022, 12, 31)  # Define your desired end date
+#     days_between = (end_date - start_date).days
+#     random_days = random.randint(0, days_between)
+#     random_date = start_date + datetime.timedelta(days=random_days)
+#     return random_date
+# departments = list(HiTechClass)
 
-username = "manager"
-password = "qwertyuiop"
-hostname = "projectdatabase.gekhcz5.mongodb.net"
-dbname = "employees"
-List_names=["avishag","yael","shirel","tehila","rinat","avigailTen"]
+# username = "manager"
+# password = "qwertyuiop"
+# hostname = "projectdatabase.gekhcz5.mongodb.net"
+# dbname = "employees"
+# List_names=["avishag","yael","shirel","tehila","rinat","avigailTen"]
 
-List_tagsBac = ["Python", "Java", "Databases", "API Design", "Microservices", "Testing"]
+# List_tagsBac = ["Python", "Java", "Databases", "API Design", "Microservices", "Testing"]
 
-List_tagFro = [
-    "HTML/CSS",
-    "JavaScript",
-    "UI/UX Design",
-    "Frontend Frameworks",
-    "Responsive Design",
-    "Testing & Debugging",
-]
-List_lists = [List_tagsBac, List_tagFro]
-for i in range(7):
+# List_tagFro = [
+#     "HTML/CSS",
+#     "JavaScript",
+#     "UI/UX Design",
+#     "Frontend Frameworks",
+#     "Responsive Design",
+#     "Testing & Debugging",
+# ]
+# List_lists = [List_tagsBac, List_tagFro]
+# for i in range(7):
         
-    tags = list(List_lists[i % 2])
-    random.shuffle(tags)
-    employee = Employee(employee_id=str(i), first_name=List_names[i%6], last_name=List_names[i%5+1],
-                email=List_names[i%6] +str(i)+ "@gmail.com",
-               phone_number="0583280"+str(i/100)+str(i%10/10)+str(i%100),start_date=generate_random_date(),
-              tags=tags,days_in_home=i%5,meet=i%9==0,grade=i%25,floors=[i%2,0,i%2,1,i%2],space=[i,i+1,i+2,i+3],user_name=List_names[i%6], password=str(i))
-employee.save()
-print("start")
-print("Done! ")
+#     tags = list(List_lists[i % 2])
+#     random.shuffle(tags)
+#     employee = Employee(employee_id=str(i), first_name=List_names[i%6], last_name=List_names[i%5+1],
+#                 email=List_names[i%6] +str(i)+ "@gmail.com",
+#                phone_number="0583280"+str(i/100)+str(i%10/10)+str(i%100),start_date=generate_random_date(),
+#               tags=tags,days_in_home=i%5,meet=i%9==0,grade=i%25,floors=[i%2,0,i%2,1,i%2],space=[i,i+1,i+2,i+3],user_name=List_names[i%6], password=str(i))
+# employee.save()
+# print("start")
+# print("Done! ")
 
 
 app.include_router(employee.router)
