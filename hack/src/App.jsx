@@ -5,6 +5,7 @@ import BookResourcePage from "./BookResourcePage";
 import MainPage from "./MainPage";
 import TaskForm from "./tfyy";
 import { getTasks } from "./apiClient";
+import About from "./About";
 
 export const DataContext = React.createContext({});
 
@@ -12,10 +13,10 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    getTasks().then((tasksFromServer) => {
-      console.log(tasksFromServer);
-      setTasks(tasksFromServer);
-    });
+    // getTasks().then((tasksFromServer) => {
+      console.log('tasksFromServer');
+      // setTasks(tasksFromServer);
+    // },[]);
   }, []);
 
   return (
@@ -26,11 +27,20 @@ function App() {
     >
       <BrowserRouter>
         <Routes>
-           <Route path="/" element={<MainPage />} />
-          <Route path="/bookResourcePage" element={<BookResourcePage />} />
-          <Route path="/TaskForm" element={<TaskForm />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path='/about' element={<About />} />
+        <Route path="/bookResourcePage" element={<BookResourcePage />} />
+{/*           
+          <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/bookResourcePage" element={<bookResourcePage />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router> */}
 
-          
+
         </Routes>
       </BrowserRouter>
     </DataContext.Provider>

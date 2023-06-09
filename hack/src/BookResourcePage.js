@@ -44,6 +44,7 @@ function BookResourcePage() {
         </div>
       </div>
       <button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }}className="confirm-button">Confirm</button>
+      <button style={{ position: 'absolute', height: '20vh',bottom: '10px', right: '10px',color:'',padding: '10px' }}>HOME</button>
     </div>
 
 

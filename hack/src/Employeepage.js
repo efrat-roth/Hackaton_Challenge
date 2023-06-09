@@ -79,10 +79,11 @@ function Employeepage() {
           <input type="checkbox" checked={isFrontend} onChange={(e) => setIsFrontend(e.target.checked)} />
         </label>
         <br />
-        
+
         <button type="submit">Save</button>
         <button type="submit">Delete</button>
         <button type="submit">Update</button>
+        <button style={{ position: 'absolute', height: '20vh',bottom: '10px', right: '10px',color:'',padding: '10px' }}>HOME</button>
       </form>
     </div>
   );

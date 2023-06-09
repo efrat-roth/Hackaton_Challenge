@@ -2,6 +2,8 @@ import { Button, Box } from "@mui/material";
 import styled from "styled-components";
 import React, { useState } from "react";
 import { getOptimizatiom } from "./apiClient";
+import { useNavigate } from "react-router-dom";
+
 
 const MainScreen = styled.div`
   width: 100%;
@@ -35,13 +37,15 @@ function MainPage() {
   const [employees, setEmployees] = useState([]);
 
   function handleClickEvents() {
-    fetch("http://localhost:8000/employee/all")
-      .then((rep) => rep.json())
-      .then((jsons) => setEmployees(jsons));
+    // fetch("http://localhost:8000/employee/all")
+    //   .then((rep) => rep.json())
+    //   .then((jsons) => setEmployees(jsons));
   }
   function schedulehandleClickEvents() {
-    getOptimizatiom();
+    // getOptimizatiom();
   }
+
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -53,35 +57,29 @@ function MainPage() {
       <h1 style={{ fontSize: "70px", color: "#00008B" }}>OptiSpace</h1>
       <div>
         <Box>
-          <Button style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }}>
+          <Button style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }} onClick={()=>navigate(`/about`)}>
             About
           </Button>
-          <Button style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }}>
+          <Button style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }} onClick={()=>navigate(`/bookResourcePage`)}>
             Book a Resource
           </Button>
           <Button
             style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }}
-            onClick={handleClickEvents}
+            onClick={()=>handleClickEvents}
           >
             Scedule
           </Button>
-          <Button style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }}>
+          <Button style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }} onClick={navigate(`/about`)}>
             New Employee
           </Button>
           <Button
             style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }}
             onClick={schedulehandleClickEvents}
           >
-            CreateBoard
+            Create Board
           </Button>
         </Box>
-        <div>
-          {employees.map((employee, i) => (
-            <div key={i}>
-              employ {i}-{employee.email}
-            </div>
-          ))}
-        </div>
+        <div>{employees.map((employee, i) => <div key={i}>employ {i}-{employee.email}</div>)}</div>
       </div>
     </div>
   );
