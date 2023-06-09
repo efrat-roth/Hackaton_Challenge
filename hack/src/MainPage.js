@@ -36,19 +36,14 @@ const App = () => {
 function MainPage() {
   const [employees, setEmployees] = useState([]);
 
-<<<<<<< HEAD
-  function handleClickEvents() {
-    fetch("http://localhost:8000/employee/all")
-      .then((rep) => rep.json())
-      .then((jsons) => setEmployees(jsons));
-  }
-=======
+
+
   // function handleClickEvents() {
   //   // fetch("http://localhost:8000/employee/all")
   //   //   .then((rep) => rep.json())
   //   //   .then((jsons) => setEmployees(jsons));
   // }
->>>>>>> e80390d3386eaeaa0d60a36ffb910e2b4110dcd2
+
   function schedulehandleClickEvents() {
     getOptimizatiom();
   }
