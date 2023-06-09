@@ -1,7 +1,13 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 function BookResourcePage() {
+
+  const navigate = useNavigate();
+
+
+
   return (
     <div
     className="my-container"
@@ -44,7 +50,7 @@ function BookResourcePage() {
         </div>
       </div>
       <button style={{ fontSize: '15px' ,gap: '4px', color: '#8B4513' }}className="confirm-button">Confirm</button>
-      <button style={{ position: 'absolute', height: '20vh',bottom: '10px', right: '10px',color:'',padding: '10px' }}>HOME</button>
+      <button style={{ position: 'absolute', height: '20vh',bottom: '10px', right: '10px',color:'',padding: '10px' } }onclick={()=>navigate('/')}>HOME</button>
     </div>
 
 

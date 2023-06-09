@@ -36,11 +36,19 @@ const App = () => {
 function MainPage() {
   const [employees, setEmployees] = useState([]);
 
+<<<<<<< HEAD
   function handleClickEvents() {
     fetch("http://localhost:8000/employee/all")
       .then((rep) => rep.json())
       .then((jsons) => setEmployees(jsons));
   }
+=======
+  // function handleClickEvents() {
+  //   // fetch("http://localhost:8000/employee/all")
+  //   //   .then((rep) => rep.json())
+  //   //   .then((jsons) => setEmployees(jsons));
+  // }
+>>>>>>> e80390d3386eaeaa0d60a36ffb910e2b4110dcd2
   function schedulehandleClickEvents() {
     getOptimizatiom();
   }
@@ -64,12 +72,12 @@ function MainPage() {
             Book a Resource
           </Button>
           <Button
-            style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }}
-            onClick={()=>handleClickEvents}
-          >
-            Scedule
+            style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }}onClick={()=>navigate(`/schedule`)}>
+            {/* // onClick={()=>handleClickEvents} */}
+          
+            Schedule
           </Button>
-          <Button style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }} onClick={navigate(`/about`)}>
+          <Button style={{ fontSize: "15px", gap: "4px", color: "#8B4513" }} onClick={()=>navigate(`/about`)}>
             New Employee
           </Button>
           <Button

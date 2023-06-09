@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+const SERVER_URL = "http://localhost:8000";
+
 
 const Schedule = () => {
   const [selectedValues, setSelectedValues] = useState({
@@ -12,12 +15,14 @@ const Schedule = () => {
   });
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
   }, []);
+
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/employee/214430035').json();
+      const response = await axios.get(`${SERVER_URL}/sced_arr/all`).json();
       const data = response.data;
       const floors=data.floors
 
@@ -88,6 +93,7 @@ const Schedule = () => {
             <option value="x">X</option>
           </select>
         </div>
+        <button style={{ position: 'absolute', height: '20vh',bottom: '10px', right: '10px',color:'',padding: '10px' }} onClick={()=>navigate(`/`)}>HOME</button>
       </div>
     </div>
   );
