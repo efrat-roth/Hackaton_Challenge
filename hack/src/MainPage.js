@@ -37,12 +37,12 @@ function MainPage() {
   const [employees, setEmployees] = useState([]);
 
   function handleClickEvents() {
-    // fetch("http://localhost:8000/employee/all")
-    //   .then((rep) => rep.json())
-    //   .then((jsons) => setEmployees(jsons));
+    fetch("http://localhost:8000/employee/all")
+      .then((rep) => rep.json())
+      .then((jsons) => setEmployees(jsons));
   }
   function schedulehandleClickEvents() {
-    // getOptimizatiom();
+    getOptimizatiom();
   }
 
   const navigate = useNavigate();

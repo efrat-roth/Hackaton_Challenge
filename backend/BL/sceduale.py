@@ -41,6 +41,7 @@ def update_lists():
 
     for i in range(len(array_of_lists)):
         process_lists(array_of_lists[i],i)
+    return("The schedules were updated successfully")
         
 
 
