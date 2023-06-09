@@ -6,6 +6,7 @@ import MainPage from "./MainPage";
 import TaskForm from "./tfyy";
 import { getTasks } from "./apiClient";
 import About from "./About";
+import Schedule from "./Schedule";
 
 export const DataContext = React.createContext({});
 
@@ -30,6 +31,8 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path='/about' element={<About />} />
         <Route path="/bookResourcePage" element={<BookResourcePage />} />
+        <Route path="/schedule" element={<Schedule/>} />
+
 {/*           
           <Router>
       <Routes>
