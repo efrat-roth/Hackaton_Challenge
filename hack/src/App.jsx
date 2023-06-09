@@ -29,8 +29,7 @@ function App() {
         <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path='/about' element={<About />} />
-        <Route path="/bookResourcePage" element={<bookResourcePage />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/bookResourcePage" element={<BookResourcePage />} />
 {/*           
           <Router>
       <Routes>
